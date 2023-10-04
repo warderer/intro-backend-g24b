@@ -14,6 +14,14 @@ const create = (body) => {
       ['house_id', 'title', 'description', 'guests', 'address', 'rental_price', 'fk_user', 'active', 'created_at']) // ¿Qué quiero que me regrese?
 }
 
+const findAll = () => {
+  return knex
+    .select('*')
+    .from('homes')
+    .where('active', true) // Traemos solo los campos a los que no hayamos hecho soft delete
+}
+
 module.exports = {
-  create
+  create,
+  findAll
 }
