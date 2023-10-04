@@ -23,7 +23,18 @@ const findAllHomes = (req, res) => {
     })
 }
 
+const findOneHome = (req, res) => {
+  ModelHomes.findOne(req.params.houseId)
+    .then((result) => {
+      res.status(200).send(result)
+    })
+    .catch((error) => {
+      res.status(400).send({ message: 'Error listing house', error })
+    })
+}
+
 module.exports = {
   createHome,
-  findAllHomes
+  findAllHomes,
+  findOneHome
 }
